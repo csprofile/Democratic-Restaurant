@@ -1,0 +1,11 @@
+<div class="jumbotron">
+    <h3>My vote</h3>
+    <form ng-submit="confirmVote()">
+        <div class="radio" ng-repeat="restaurant in restaurants">
+            <label>
+                <input type="radio" name="vote" ng-value="restaurant.name" ng-model="selectedRestaurant.name" />{{restaurant.name}}
+            </label>
+        </div>
+        <button type="submit" class="btn">Confirm</button>
+    </form>
+</div>

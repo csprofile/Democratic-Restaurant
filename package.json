@@ -1,0 +1,33 @@
+{
+  "name": "democratic-lunch",
+  "version": "1.0.0",
+  "description": "Screening front-end project to DBServer.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csprofile/Democratic-lunch.git"
+  },
+  "keywords": [
+    "Democratic",
+    "lunch",
+    "screening",
+    "restaurant",
+    "choice",
+    "voting"
+  ],
+  "author": "Cristian Silva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csprofile/Democratic-lunch/issues"
+  },
+  "homepage": "https://github.com/csprofile/Democratic-lunch#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "dateformat": "^2.0.0",
+    "express": "^4.14.0",
+    "path": "^0.12.7"
+  }
+}

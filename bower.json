@@ -1,0 +1,32 @@
+{
+  "name": "democratic-lunch",
+  "description": "Screening front-end project to DBServer.",
+  "main": "index.js",
+  "authors": [
+    "Cristian Silva"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "Democratic",
+    "lunch",
+    "screening",
+    "restaurant",
+    "choice",
+    "voting"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "www/bower_components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "1.5.9",
+    "angular": "1.5.9",
+    "jquery": "3.1.1",
+    "bootstrap": "^3.3.7"
+  }
+}

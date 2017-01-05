@@ -1,0 +1,4 @@
+.form-horizontal .control-label{
+    text-align: left;
+    white-space: nowrap;
+}
