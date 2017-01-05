@@ -1,10 +1,11 @@
-# Angular Sandbox
-Single Angular sandbox with bootstrap and JQuery library included.
+# Democratic restaurant
+A open source app to teams choose the restaurant for lunch
 
 # Install
-npm install
-bower install
-node server/app
+In root folder run:<br/>
+npm install<br/>
+bower install<br/>
+node server/app<br/>
 
 ### Contact
 ##### Cristian Silva | Web Developer
