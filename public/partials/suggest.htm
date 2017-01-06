@@ -1,0 +1,14 @@
+<div class="jumbotron">
+    <h3>Suggest a restaurant</h3>
+    <form class="form" ng-submit="suggest()">
+        <div class="form-group">
+            <label for="Name">Restaurant name</label>
+            <input type="text" class="form-control" id="Name" placeholder="Al Capone Restaurant" ng-model="restaurantName" required/>
+        </div>
+        <div class="form-group">
+            <label for="Address">Address</label>
+            <input type="text" class="form-control" id="Address" placeholder="Rua Nazaré, 666" ng-model="restaurantAddress" required/>
+        </div>
+        <button type="submit" class="btn">Suggest</button>
+    </form>
+</div>

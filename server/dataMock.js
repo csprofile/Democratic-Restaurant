@@ -1,4 +1,4 @@
-﻿module.exports = {
+module.exports = {
 	collections:{},
 	wake:function(){
 		this.collections.user = [];
@@ -19,20 +19,16 @@
 	},
 	select:function(collection, selectBy, value){
 		var coll = this.collections[collection];
+        var result = [];
 		for(var x=0 ; x<coll.length; x++){
 			if(coll[x][selectBy] === value){
-				return coll[x]
+				result.push(coll[x])
 			}
 		}
 		
-		return{};
+		return result;
 	},
 	selectAll:function(collection){
 		return this.collections[collection];
-	},
-	getCollectionKey:{
-		user:'login',
-		restaurant:'name',
-		vote:'userDateVoteKey'
 	}
 }

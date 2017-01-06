@@ -1,4 +1,43 @@
+<div class="jumbotron" ng-hide="userIsLogged" class="hg-hide">
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="login">Login:</label>
+            <input type="login" class="form-control" id="login" ng-model="userLogin">
+        </div>
+        <div class="form-group">
+            <label for="pass">Password:</label>
+            <input type="password" class="form-control" id="pass" ng-model="userPassword">
+        </div>
+        <button type="submit" class="btn btn-default" ng-click="login()">Submit</button>
+    </form>
+    <br/>
+    <div class="alert alert-danger">
+        <strong>{{message}}</strong>
+    </div>
+</div>
+
 <div class="jumbotron">
     <h3>Daily Result</h3>
-    <p>{{result}}</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Restaurant</th>
+                <th>Address</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="res in result | orderBy:'-votes'" ng-class="{success:$first}">
+                <td>
+                    <b>{{res.restaurant.name}}</b>
+                </td>
+                <td>
+                    {{res.restaurant.address}}
+                </td>
+                <td>{{res.votes}} Vote(s)</td>
+            </tr>
+        </tbody>
+    </table>
+
 </div>

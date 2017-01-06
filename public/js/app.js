@@ -4,21 +4,42 @@
 var app = angular.module('app', ['ngRoute']);
 
 // ROUTES
-app.config(function ($routeProvider) {
+app.config(['$routeProvider',function ($routeProvider) {
 
-    $routeProvider
+    $routeProvider.
 
-    .when('/', {
+    when('/', {
         templateUrl: '/partials/dayliResult.htm',
-        controller: 'dailyResultController'
-    })
-    .when('/dailyResult', {
+        controller: 'dailyResultController',
+        requireLogin:false
+    }).
+    when('/dailyResult', {
         templateUrl: '/partials/dayliResult.htm',
-        controller: 'dailyResultController'
-    })
-    .when('/vote', {
+        controller: 'dailyResultController',
+        requireLogin:false
+    }).
+    when('/vote', {
         templateUrl: '/partials/vote.htm',
-        controller: 'voteController'
+        controller: 'voteController',
+        requireLogin:true
+    }).
+    when('/suggest', {
+        templateUrl: '/partials/suggest.htm',
+        controller: 'suggestController',
+        requireLogin:true
     })
-    
-});
+
+}]).run(['$rootScope','$route','$location','sessionService',function($rootScope,$route,$location,sessionService){
+    //Check if user is logged
+    $rootScope.$on("$routeChangeStart", function(event, next, current) {
+        if(next){
+            if(next.$$route.requireLogin && !sessionService.getUserAuthenticated()) {
+                $location.path('/');
+                event.preventDefault();
+            }
+        }else{
+            $location.path('/');
+        }
+    });
+
+}]);

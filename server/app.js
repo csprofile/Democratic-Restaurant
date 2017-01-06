@@ -18,71 +18,102 @@ dataMock.wake();
 dataMock.insertFakeData();
 
 /*HTTP*/
-app.get('/api/getDocByKey/:collection/:key', function (req, res) {
-	var collectionKey = dataMock.getCollectionKey[req.params.collection];
-	var doc = dataMock.select(req.params.collection,collectionKey,req.params.key);
-	res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify(doc));
-});
 
 app.get('/api/getCollection/:collection', function (req, res) {
-	var collection = dataMock.selectAll(req.params.collection);
-	res.setHeader('Content-Type', 'application/json');
+    var collection = dataMock.selectAll(req.params.collection);
+    res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify(collection));
 });
 
-
 app.get('/api/vote/dailyResult', function (req, res) {
-	var reportResult = {};
-	var now = dateFormat(new Date(), "shortDate");
-	var votes = dataMock.selectAll('vote');
-	
-	for(var x = 0 ; x < votes.length ; x++){
-		if(now === votes[x].date){
-			var restaurantName = votes[x].restaurantName;
-			
-			if (restaurantName in reportResult) {
-				reportResult[restaurantName] ++
-			}else{
-				reportResult[restaurantName] = 1;
-			}
-		}
-	}
+    var reportResult = [];
+    var now = dateFormat(new Date(), "shortDate");
+    var votes = dataMock.selectAll('vote');
 
-	res.setHeader('Content-Type', 'application/json');
-	res.send(JSON.stringify(reportResult));
+    for(var x = 0 ; x < votes.length ; x++){
+        if(now === votes[x].date){
+            var restaurantId = votes[x].restaurantId;
+
+            if (restaurantId in reportResult) {
+                reportResult[restaurantId].votes ++;
+            }else{
+                reportResult[restaurantId] = {};
+                reportResult[restaurantId].votes = 1;
+                reportResult[restaurantId].restaurant = dataMock.select('restaurant','id',restaurantId)[0];
+            }
+        }
+    }
+
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(reportResult));
+});
+
+app.post('/api/user/userLogin', function(req, res){
+    
+    var user = dataMock.select('user','login',req.body.login);
+    var result = {};
+    
+    
+    if(user.length > 0){
+        if(user[0].pass === req.body.password){
+            var now = dateFormat(new Date(), "shortDate");
+            var votes = dataMock.select('vote','userId',user[0].id);
+            var todaysVote = {};
+
+            for(var x = 0 ; x < votes.length ; x++){
+                if(now === votes[x].date){
+                    todaysVote = votes[x];
+                    break;
+                }
+            }
+            
+            result = {
+                userId: user[0].id,
+                userTodaysVote: todaysVote
+            }
+        }
+    }
+
+
+
+
+
+
+
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(result));
 });
 
 app.post('/api/user', function(req, res){
-	dataMock.insert('user',{
-		login:req.body.login,
-		pass:req.body.pass
-	});
-	
-	res.status(201).send('New user created');
+    dataMock.insert('user',{
+        login:req.body.login,
+        pass:req.body.pass
+    });
+
+    res.status(201).send('New user created');
 });
 
 app.post('/api/restaurant', function(req, res){
-	dataMock.insert('restaurant',{
-		name:req.body.name,
-		address:req.body.address
-	});
-	
-	res.status(201).send('New restaurant created');
+    dataMock.insert('restaurant',{
+        name:req.body.name,
+        address:req.body.address
+    });
+
+    res.status(201).send('New restaurant created');
 });
 
 app.post('/api/vote', function(req, res){
-	dataMock.insert('vote',{
-		userId:req.body.userId,
-		restaurantName:req.body.restaurantName,
-		date:dateFormat(new Date(), "shortDate")
-	});
-	
-	res.status(201).send('Vote registered');
+    dataMock.insert('vote',{
+        userId:req.body.userId,
+        restaurantId:req.body.restaurantId,
+        date:dateFormat(new Date(), "shortDate")
+    });
+
+    res.status(201).send('Vote registered');
 });
 
 
 /*Start server*/
 app.listen(3000, function () {
-  console.log('Running');
+    console.log('Running on port 3000!');
 });

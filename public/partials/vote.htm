@@ -1,11 +1,15 @@
 <div class="jumbotron">
     <h3>My vote</h3>
-    <form ng-submit="confirmVote()">
+    <form ng-submit="confirmVote()" ng-hide="voted" class="ng-hide">
         <div class="radio" ng-repeat="restaurant in restaurants">
             <label>
-                <input type="radio" name="vote" ng-value="restaurant.name" ng-model="selectedRestaurant.name" />{{restaurant.name}}
+                <input type="radio" name="vote" ng-value="restaurant.id" ng-model="selectedRestaurant.id" required/>{{restaurant.name}}
             </label>
         </div>
         <button type="submit" class="btn">Confirm</button>
     </form>
+
+    <div class="alert alert-{{messageClass}} ng-hide" ng-show="voted">
+        {{message}}
+    </div>
 </div>
