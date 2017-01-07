@@ -25,6 +25,9 @@ app.controller('dailyResultController',['$scope','$http','sessionService',functi
         method: 'GET',
         url: '/api/vote/dailyResult'
     }).then(function successCallback(response) {
+        response.data = response.data.filter(function( element ) {
+            return element !== null;
+        });
         $scope.result = response.data;
     }, function errorCallback(response) {
         $scope.result = '';
