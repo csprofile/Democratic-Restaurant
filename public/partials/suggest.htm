@@ -11,4 +11,8 @@
         </div>
         <button type="submit" class="btn btn-primary">Suggest</button>
     </form>
+
+    <div class="alert alert-{{messageClass}} ng-hide" ng-show="showMessage">
+        {{message}}
+    </div>
 </div>

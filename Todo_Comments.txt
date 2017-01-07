@@ -5,11 +5,14 @@ Páginas parciais separadas e controllers distribuídos de forma organizada.
 Layout responsivo.
 Criação de um mudulo de Mock de dados para o backend.
 Backend e Frontend separados e com gerenciadores de pacote próprios para cada um.
+Nomes de métodos e variáveis de clara compreensão.
 
 
 TODO:
 - Implementar testes unitários
 - Implementar sessão
 - Implementar fim da votação
-- Implementar a não repetição de restaurantes na semana
 - Implementar autenticação
+- Impedir cadastro de usuários duplicados
+- Impedir cadastro de restaurantes duplicados
+- Impedir a repetição de restaurantes na semana
