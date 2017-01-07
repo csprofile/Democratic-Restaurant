@@ -2,14 +2,15 @@
     <form class="form-inline">
         <div class="form-group">
             <label for="login">Login:</label>
-            <input type="login" class="form-control" id="login" ng-model="userLogin">
+            <input type="login" class="form-control" id="login" ng-model="userLogin" required/>
         </div>
         <div class="form-group">
             <label for="pass">Password:</label>
-            <input type="password" class="form-control" id="pass" ng-model="userPassword">
+            <input type="password" class="form-control" id="pass" ng-model="userPassword" required/>
         </div>
-        <button type="submit" class="btn btn-default" ng-click="login()">Submit</button>
+        <button type="submit" class="btn btn-primary" ng-click="login()">Submit</button>
     </form>
+    <small><a ng-href="#createUser">Click here to create new user</a></small>
     <br/>
     <div class="alert alert-danger">
         <strong>{{message}}</strong>

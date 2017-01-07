@@ -1,0 +1,19 @@
+<div class="jumbotron">
+    <h3>Create User</h3>
+    <form ng-submit="createUser()">
+        <div class="form-group">
+            <label for="createLogin">User login</label>
+            <input type="text" class="form-control" id="createLogin" placeholder="Joana" ng-model="login" required/>
+        </div>
+        <div class="form-group">
+            <label for="createPass">Password</label>
+            <input type="password" class="form-control" id="createPass" ng-model="pass" placeholder="Password" required/>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    
+    <div class="alert alert-{{messageClass}} ng-hide" ng-show="created">
+        {{message}}
+    </div>
+</div>

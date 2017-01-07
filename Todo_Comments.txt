@@ -1,0 +1,15 @@
+COMENTÁRIOS:
+Código simples e utilizando um Stack atual de Javascript.
+Angular utilizando o padrão que permite a minificação do código.
+Páginas parciais separadas e controllers distribuídos de forma organizada.
+Layout responsivo.
+Criação de um módulo de Mock de dados para o backend.
+Backend e Frontend separados e com gerenciadores de pacote próprios para cada um.
+
+
+TODO:
+- Implementar testes unitários
+- Implementar sessão
+- Implementar fim da votação
+- Implementar a não repetição de restaurantes na semana
+- Implementar autenticação

@@ -27,6 +27,11 @@ app.config(['$routeProvider',function ($routeProvider) {
         templateUrl: '/partials/suggest.htm',
         controller: 'suggestController',
         requireLogin:true
+    }).
+    when('/createUser', {
+        templateUrl: '/partials/createUser.htm',
+        controller: 'createUserController',
+        requireLogin:false
     })
 
 }]).run(['$rootScope','$route','$location','sessionService',function($rootScope,$route,$location,sessionService){

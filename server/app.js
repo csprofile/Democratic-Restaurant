@@ -41,7 +41,7 @@ app.get('/api/vote/dailyResult', function (req, res) {
                 reportResult[restaurantId].votes = 1;
                 reportResult[restaurantId].restaurant = dataMock.select('restaurant','id',restaurantId)[0];
             }
-        }
+        }			
     }
 
     res.setHeader('Content-Type', 'application/json');
@@ -49,10 +49,8 @@ app.get('/api/vote/dailyResult', function (req, res) {
 });
 
 app.post('/api/user/userLogin', function(req, res){
-    
     var user = dataMock.select('user','login',req.body.login);
     var result = {};
-    
     
     if(user.length > 0){
         if(user[0].pass === req.body.password){
@@ -74,20 +72,14 @@ app.post('/api/user/userLogin', function(req, res){
         }
     }
 
-
-
-
-
-
-
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify(result));
 });
 
-app.post('/api/user', function(req, res){
+app.post('/api/user/create', function(req, res){
     dataMock.insert('user',{
         login:req.body.login,
-        pass:req.body.pass
+        pass:req.body.password
     });
 
     res.status(201).send('New user created');

@@ -18,6 +18,7 @@
         <script src="js/ang-controllers/dailyResultController.js"></script>
         <script src="js/ang-controllers/voteController.js"></script>
         <script src="js/ang-controllers/suggestController.js"></script>
+        <script src="js/ang-controllers/createUserController.js"></script>
         <script src="js/ang-controllers/navController.js"></script>
 
     </head>
@@ -38,6 +39,7 @@
                         </div>
                         <div id="navbar" class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-right" ng-controller="HeaderController">
+                                <li  ng-class="{ active: isActive('/createUser')}"><a ng-href="#createUser">Create User</a></li>
                                 <li  ng-class="{ active: isActive('/dailyResult') || isActive('/')}"><a ng-href="#dailyResult">Daily Result</a></li>
                                 <li  ng-class="{ active: isActive('/vote')}"><a ng-href="#vote">My vote</a></li>
                                 <li  ng-class="{ active: isActive('/suggest')}"><a ng-href="#suggest">Suggest a restaurant</a></li>
