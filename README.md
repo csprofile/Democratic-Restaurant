@@ -8,7 +8,7 @@ bower install<br/>
 node server/app<br/>
 
 ### Contact
-##### Cristian Silva | Web Developer
-* Page : csprofile.github.io
+##### Cristian Silva | Software Developer | Database Engineer
+* Page : http://csprofile.github.io
 * Skype: wd.cristian
 * Email: wd.cristian@gmail.com
